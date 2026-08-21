@@ -30,6 +30,6 @@ It is important to note that the lectures will focus primarily on the theoretica
 5. Complete the [ROS 2 installation guide](2-ROS_2_installation_guide.md)
 
 ### Deliverables
-1. Complete the [Pre-Course Survey](https://docs.google.com/forms/d/e/1FAIpQLSeMHQ29zC6Qik3Onzgf-Mu_Za4QwYdDaYw25Y1FK0MTpt8bJA/viewform?usp=dialog).
+1. Complete the [Pre-Course Survey](https://forms.gle/3xk8T8tu7h23bR9U9).
 2. Visible login activity in your accounts. This is a non-graded activity, however, it is important for
 us to see if you experience troubles while accessing Gradescope, Piazza or setting up Ubuntu and ROS 2.
