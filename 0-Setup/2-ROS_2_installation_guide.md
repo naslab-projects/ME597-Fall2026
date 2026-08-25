@@ -7,8 +7,8 @@ Later on, we will also see just like how Python has many packages, so does ROS2.
 
 # ROS 2 Humble Hawksbill installation guide:
 1. Open a terminal using `Ctrl+Alt+T`
-1. Follow these [instructions](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html) carefully
-1. Try out the [examples](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html#try-some-examples) as suggested ensuring everything works.
+1. Follow these [instructions](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) carefully
+1. Try out the [examples](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html#try-some-examples) as suggested ensuring everything works.
 1. In order to source your colcon workspace everytime you open a new terminal automatically, run this command in your terminal:
     * (Do not copy the '\$' sign, the '\$' sign is an indicator that this command must be run in the terminal)
     * $`echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc`
