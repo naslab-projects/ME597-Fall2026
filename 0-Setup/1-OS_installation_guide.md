@@ -13,9 +13,9 @@ Please attempt to install Ubuntu and ROS2 on your personal computer using the st
 ### Options to install Ubuntu 22.04:
 #### Option 1: Use Ubuntu through a Virtual Machine (VM) (the easiest option):
   * VMWare (Better Performance VM) 
-    1. Follow the instructions at the bottom of the page to install VMWare and Ubuntu 22.04 image.
+    1. Follow the instructions below in [Install VMWare](#install-vmware) to install VMWare and Ubuntu 22.04 image.
   * VirtualBox (Alternative VM - Available on lab computers)
-    1. Follow the instructions at the bottom of the page to install VirtualBox and Ubuntu 22.04 image.
+    1. Follow the instructions below in [Install VirtualBox](#install-virtualbox) to install VirtualBox and Ubuntu 22.04 image.
     
 #### Option 2: Install Ubuntu Natively (harder to setup, but will give best performance):
   * Dual boot- Windows and Ubuntu: [source](https://help.ubuntu.com/community/WindowsDualBoot)
@@ -24,17 +24,17 @@ Please attempt to install Ubuntu and ROS2 on your personal computer using the st
 #### Option 3: Install WSL2 and Visual Studio code on Windows machine:
   * Install Ubuntu 22.04 using Powershell or Windows Store
   * Install Visual Studio Code with WSL extension.
+  * Instructions: [Using WSL2 on Windows 11](#using-wsl2-on-windows-11)
 
 #### Option 4: Using Ubuntu 22.04 via docker container on a linux machine (Advanced):
    * Install docker. [link](https://docs.docker.com/engine/install/)
-   * Pull and run the osrf/ros:humble-desktop image with correct configurations.
-     [link](https://hub.docker.com/layers/osrf/ros/humble-desktop-full/images/sha256-71ae08a6a0aae71a2f981e066c8a1d7dd76e956abf419c04626a0c746c3ebf4f)
-   * Windows and MacOS users: Docker in Windows and MacOS runs linux containers inside a hidden linux VM, which does not support network protocols that operate below TCP or UDP, which ROS requires. See [link](https://docs.docker.com/engine/network/drivers/host/)
+   * Pull and run the [osrf/ros:humble-desktop](https://hub.docker.com/layers/osrf/ros/humble-desktop-full/images/sha256-71ae08a6a0aae71a2f981e066c8a1d7dd76e956abf419c04626a0c746c3ebf4f) image.
+   * **Windows and macOS users**: Docker Desktop runs Linux containers inside a Linux VM. Its host networking is not equivalent to native Linux host networking, so containers do not directly share the computer’s physical network interfaces. This interferes with ROS 2 DDS multicast discovery and peer-to-peer communication with the turtlebots in the lab. See Docker host networking. See [Docker Host Networking](https://docs.docker.com/engine/network/drivers/host/)
 
 ### Install VMWare
 VMWare Workstation Pro (personal use) is the best free Virtual Machine available:
 1. Read 'Using a Virtual Machine'
-2. Begin downloading the ME597 Ubuntu 22.04 image here: [Link](https://purdue0-my.sharepoint.com/:f:/g/personal/bergman9_purdue_edu/Em6RvmPqnJVJkFtfomJFiWMBApOg5o9bXQoma4h_oVpdkQ?e=Ul0Y2K)
+2. Begin downloading the ME597 Ubuntu 22.04 image here: [Link](https://purdue0-my.sharepoint.com/:f:/g/personal/park1375_purdue_edu/IgBrfVz1JQJ8SZs807fGjnmZAZhzoH21GyuS8P8G2ZIKgY8?e=Bw1lIz)
 3. Go to VMWare (broadcom) website [Link](https://support.broadcom.com/group/ecx/downloads)
 4. Create an account and enter your information.
 5. In the "My Downloads" tab, click "VMware Workstation Pro", then "VMware Workstation Pro xx.x for Personal Use (Windows)" and select a release version.
@@ -46,7 +46,7 @@ VMWare Workstation Pro (personal use) is the best free Virtual Machine available
 
 ### Install VirtualBox
 1. Read 'Using a Virtual Machine'
-2. Begin downloading the ME597 Ubuntu 22.04 image here: [Link](https://purdue0-my.sharepoint.com/:f:/g/personal/bergman9_purdue_edu/Em6RvmPqnJVJkFtfomJFiWMBApOg5o9bXQoma4h_oVpdkQ?e=Ul0Y2K)
+2. Begin downloading the ME597 Ubuntu 22.04 image here: [Link](https://purdue0-my.sharepoint.com/:f:/g/personal/park1375_purdue_edu/IgBrfVz1JQJ8SZs807fGjnmZAZhzoH21GyuS8P8G2ZIKgY8?e=Bw1lIz)
 3. (Pre-installed in POTR176 and ME2038) Download VirtualBox from the following [link](https://www.virtualbox.org/wiki/Downloads) and install it.
 4. Click `File` --> `Import Appliance...` --> Find .ova
 5. Change `Machine Base Folder` (C:\temp for POTR176 and ME2038)
