@@ -44,7 +44,7 @@ PLEASE NOTE:
     - pid_speed_controller := PID Controller Node
 #### Part B: Subscribe to the `/scan` topic
 5. Create a subscriber that reads the `/scan` topic. 
-    - Set the rate to 10Hz to define the execution speed of your node. You can tune this parameter - however, setting it too high will cause unnecessary load.
+    - Define a callback function that is executed whenever a new /scan message is received
 6. Get the forward-facing distance reading from lidar.
     - Check out the `sensor_msgs/LaserScan.msg` [message definition](http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html). 
     - hint: you will want to use the `float32[] ranges` attribute, which is a list of range values, and for the Turtlebot3 these correspond to:
@@ -52,7 +52,7 @@ PLEASE NOTE:
       <img src='Resources/images/TB3_laserscan.png' alt='TB3_laserscan.png' width=1000/>
 
 #### Part C: Calculate the PID Controller
-7. In the callback function, use forward distance measured from the lidar sensor as input to a PID controller to control the velocity.
+7. In the subscriber callback function, use forward distance measured from the lidar sensor as input to a PID controller to control the velocity.
     - Set the target distance to 0.35 m.
     - Tune your `Kp`, `Ki`, and `Kd` values as you wish.
     - You will be graded on meeting a specified peak time and then higher grades will be given to lower percent overshoot. (Specific grade cutoffs will be posted later).
