@@ -20,7 +20,7 @@ First, we need to prepare for the simulator:
 1. Setup TurtleBot4 packages - find the instructions [here](Resources/TurtleBot4_installation_guide.md)
 2. Familiarize yourself with the TurtleBot4 Simulator
 
-Next, we will take a look at the physical Turtlebot4, used next week (Week 5): 
+Next, we will take a look at the physical Turtlebot4, used next week (Week 4): 
 
 3. Take a look at the specs of TurtleBot4 lite: [Turtlebot4Lite](https://turtlebot.github.io/turtlebot4-user-manual/overview/features.html#turtlebot-4-lite)
 4. See how the TurtleBot4 will communicate with your PC. We will use the Discovery Server configuration to facilitate multiple robots on the same network and allow use with a Virtual Machine: [Turtlebot4 Networking](https://turtlebot.github.io/turtlebot4-user-manual/setup/networking.html) 
