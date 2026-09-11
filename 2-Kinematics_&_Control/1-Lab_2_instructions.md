@@ -65,7 +65,7 @@ PLEASE NOTE:
     - < 15%: **15/15**
     - 15–20%: **12.5/15**
     - 20–30%: **10/15**
-    - > 30%: **7.5/15**
+    - $> 30%$: **7.5/15**
 
     - **Note:** For full credit, you must use all three gains (i.e., a P, PI, or PD controller will not receive credit).
 
