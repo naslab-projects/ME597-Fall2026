@@ -56,9 +56,18 @@ PLEASE NOTE:
     - Set the target distance to 0.35 m.
     - Tune your `Kp`, `Ki`, and `Kd` values as you wish.
     - You will be graded on meeting a specified peak time and then higher grades will be given to lower percent overshoot. (Specific grade cutoffs will be posted later).
-    - **Note for full credit you must use all three gains (i.e a P, PI, or PD controller will not recieve credit)**
-   
+    **Peak Time: < 30 s**
+    - Time gathered using `self.get_clock().now().nanoseconds * 1e-9`
+    - Must belong to your ROS Node class.
+    - Failure to meet peak time will result in automatic **7.5/15**.
 
+    **Overshoot**
+    - < 15%: **15/15**
+    - 15–20%: **12.5/15**
+    - 20–30%: **10/15**
+    - > 30%: **7.5/15**
+
+    - **Note:** For full credit, you must use all three gains (i.e., a P, PI, or PD controller will not receive credit).
 
 #### Part D: Publish to the `/cmd_vel` topic
 8. In the same node file, create a publisher that writes to the `/cmd_vel` topic to move the robot. [Reference](https://turtlebot.github.io/turtlebot4-user-manual/tutorials/driving.html#command-velocity)
