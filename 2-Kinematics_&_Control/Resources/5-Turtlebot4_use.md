@@ -116,7 +116,7 @@ Try the following:
   hostname -I
   ```
 
-  If it does not match the robot's local network (192.168.1.XXX), revisit the Network Instructions below
+  If it does not match the robot's local network `192.168.1.XXX`, revisit [VM Network Instructions](#vm-network-instructions) below. **After changing network settings, rerun the TurtleBot 4 Discovery Server setup script** using your assigned robot ID and IP address.
 
 - Check your ROS configuration:
 
@@ -127,7 +127,6 @@ Try the following:
 - Make sure `ROS_LOCALHOST_ONLY=0` when communicating with the physical TurtleBot 4.
 - Double-check that the `ROS_DOMAIN_ID` and Discovery Server IP correspond to your **current robot**.
 - Power cycle the robot.
-- If you forgot to update your network settings, see the Network instructions below for Virtual Machines and WSL. **After changing network settings, rerun the TurtleBot 4 Discovery Server setup script** using your assigned robot ID and IP address.
 
 > **Can ping the robot but still can't see ROS 2 topics? Check the Windows firewall.**
 >
