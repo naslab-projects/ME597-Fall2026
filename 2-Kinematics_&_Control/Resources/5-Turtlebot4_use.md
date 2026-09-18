@@ -23,18 +23,23 @@ When lab is over, you must power off the turtlebot and return it to the storage 
     - Be patient. The Turtlebot4 must be fully booted. If it has not connected after a couple minutes, try restarting the Turtlebot4 and moving it closer to the router.
 
 # ROS2 configuration
-Recall from your lab 2 reading of [Turtlebot4 Networking](https://turtlebot.github.io/turtlebot4-user-manual/setup/networking.html), that connecting multiple devices in ROS2 has two primary configurations: Simple Discovery and Discovery Server. Below are instructions for both configurations - you will only need one. Your TAs will specify which configuration is being used.  
+Recall from your lab 2 reading of [Turtlebot4 Networking](https://turtlebot.github.io/turtlebot4-user-manual/setup/networking.html), that connecting multiple devices in ROS2 has two primary configurations: Simple Discovery and Discovery Server. Below are instructions for Discovery Server.
 
-## 3A. Communicate with Turtlebot4 via ROS2: Simple Discovery
-1. If you have configured your PC for Discovery Server in the past, go in your `~/.bashrc` and either remove or comment-out `source /etc/turtlebot4_discovery/setup.bash`. It is only needed for Discovery Server.
-
-2. Change your ROS_DOMAIN_ID to match your Robot ID number with `export ROS_DOMAIN_ID=XX`, either in your terminal or in your `~/.bashrc` (if you want it to persist).
-
-3. Make sure ROS_LOCALHOST_ONLY=0 (Only when communicating with the Turtlebot4!)
-
+## 3. Communicate with Turtlebot4 via ROS2: Discovery Server
+1. Change your VM Network to **Bridged** (See VM Network Instructions below)
+2. In your '~/.bashrc',comment out your ROS_DOMAIN_ID (# export ROS_DOMAIN_ID=XX) and change your local host to 0 to (ROS_LOCALHOST_ONLY=0)
+3. Do `User PC Setup` here: [Setup Discovery Server](https://turtlebot.github.io/turtlebot4-user-manual/setup/discovery_server.html#user-pc) Input the following when prompted (XX is your robot ID number):
+```
+ROS_DOMAIN_ID: **XX**
+Discovery Server ID: **XX**
+Discovery Server IP: **192.168.1.1XX**
+Discovery Server Port: **[Enter]**
+done (**d**)
+```
 4. To test, do `ros2 topic list` in your PC. Turtlebot4 robot topics should be available.
 
     Is ros2 topic list not getting the robot topics?
+    - Mack sure you sourced your .bashrc file: source ~/.bashrc
     - Restart the ros2 daemon: `ros2 daemon stop; ros2 daemon start`
     - Do `ros2 topic list` twice.
     - Check again your connection to the Turtlebot4 using previous steps.
@@ -43,29 +48,9 @@ Recall from your lab 2 reading of [Turtlebot4 Networking](https://turtlebot.gith
     - Power cycle the robot
     - Refer to debugging steps below
 
-## 3B. Communicate with Turtlebot4 via ROS2: Discovery server
-1. Do `User PC Setup` here: [Setup Discovery Server](https://turtlebot.github.io/turtlebot4-user-manual/setup/discovery_server.html#user-pc) (XX is your robot ID number)
-```
-ROS_DOMAIN_ID: XX
-Discovery Server ID: XX
-Discovery Server IP: 192.168.1.1XX
-Discovery Server Port:
-done (d)
-```
-2. To test, do `ros2 topic list` in your PC. Turtlebot4 robot topics should be available.
+4. When you are done using the physical robot, you must deactivate the discovery server settings for ROS2 to work with the simulator. See the instructions below to switch configurations.
 
-    Is ros2 topic list not getting the robot topics?
-    - Restart the ros2 daemon: `ros2 daemon stop; ros2 daemon start`
-    - Do `ros2 topic list` twice.
-    - Check again your connection to the Turtlebot4 using previous steps.
-    - Check your PC configuration with `printenv | grep -i ros`
-    - Make sure ROS_LOCALHOST_ONLY=0 (Only when communicating with the Turtlebot4!)
-    - Power cycle the robot
-    - Refer to debugging steps below
-
-3. When you are done using the physical robot, you must deactivate the discovery server settings for ROS2 to work with the simulator. See the instructions below to switch configurations.
-
-## Switching between Simulator, Robot (Discovery Server), and Robot (Simple Discovery)
+## Switching between Simulator and Robot (Simple Discovery)
 Your environment needs three different configurations for using the simulator and for connecting to the physical robot (in the two network configurations). To change between these, you need to modify your `~/.bashrc`. Below are snippets of what your `~/.bashrc` should look like:
 
 ### 1. To use Simulator:
@@ -78,23 +63,15 @@ export ROS_DOMAIN_ID=XX           # Your student domain id here
 # source /etc/turtlebot4_discovery/setup.bash
 ```
 
-### 2. To connect to Robot (Simple Discovery):
+### 2. To connect to Robot (Discovery Server):
 ```
 source /opt/ros/humble/setup.bash
 export ROS_LOCALHOST_ONLY=0       # Enables communication with other devices on the network
-export ROS_DOMAIN_ID=XX           # Your robot domain id here
+source /etc/turtlebot4_discovery/setup.bash  # Applies configuration specified in step 3B.1
 
 ### Comment out this line if you have it:
-# source /etc/turtlebot4_discovery/setup.bash
+# export ROS_DOMAIN_ID=XX
 ```
-
-### 3. To connect to Robot (Discovery Server):
-```
-source /opt/ros/humble/setup.bash
-export ROS_LOCALHOST_ONLY=0       # Enables communication with other devices on the network
-source /etc/turtlebot4_discovery/setup.bash  # Applies configuration specified in step 3B.1 
-```
-
 
 Remember to open a new terminal each time you switch. You may have to do `ros2 daemon stop; ros2 daemon start`
 
@@ -130,9 +107,9 @@ To change this, do the following:
 
 If this did not work, follow these steps from [this tutorial](https://onlinecomputertips.com/support-categories/pc-troubleshooting/vmware-workstation-bridged-connection-fix/):
 1. Shut down your VM safely
-1. Click "Edit" --> Virtual Network Editor...
-1. Click "Change Settings"--> Yes to allow admin privileges
-1. Change VMnet0 to Bridged, then click "Automatic Settings..." and de-select all of the adapters except your wifi adapter. (If you are not sure which one, you can go to your PC's wifi settings and click hardware properties)
+2. Click "Edit" --> Virtual Network Editor...
+3. Click "Change Settings"--> Yes to allow admin privileges
+4. Change VMnet0 to Bridged, then click "Automatic Settings..." and de-select all of the adapters except your wifi adapter. (If you are not sure which one, you can go to your PC's wifi settings and click hardware properties)
 
 ![images/vmware-bridged-network-adapter-debug.png](images/vmware-bridged-network-adapter-debug.png)
 
