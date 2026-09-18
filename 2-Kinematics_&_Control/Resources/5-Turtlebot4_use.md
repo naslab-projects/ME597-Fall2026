@@ -28,13 +28,13 @@ Recall from your lab 2 reading of [Turtlebot4 Networking](https://turtlebot.gith
 ## 3. Communicate with Turtlebot4 via ROS2: Discovery Server
 1. Change your VM Network to **Bridged** (See VM Network Instructions below)
 2. In your '~/.bashrc',comment out your ROS_DOMAIN_ID (# export ROS_DOMAIN_ID=XX) and change your local host to 0 to (ROS_LOCALHOST_ONLY=0)
-3. Do `User PC Setup` here: [Setup Discovery Server](https://turtlebot.github.io/turtlebot4-user-manual/setup/discovery_server.html#user-pc). After calling the setup script, input the following **bolded** values for their corresponding settings (XX is your robot ID number):
+3. Do `User PC Setup` here: [Setup Discovery Server](https://turtlebot.github.io/turtlebot4-user-manual/setup/discovery_server.html#user-pc). After calling the setup script, input the following response values for their corresponding settings (XX is your robot ID number):
 ```
-ROS_DOMAIN_ID: **XX**
-Discovery Server ID: **XX**
-Discovery Server IP: **192.168.1.1XX**
-Discovery Server Port: **[Enter]**
-done (**d**)
+ROS_DOMAIN_ID: XX
+Discovery Server ID: XX
+Discovery Server IP: 192.168.1.1XX
+Discovery Server Port: [Enter]
+done (d)
 ```
 4. To test, do `ros2 topic list` in your PC. Turtlebot4 robot topics should be available.
 
