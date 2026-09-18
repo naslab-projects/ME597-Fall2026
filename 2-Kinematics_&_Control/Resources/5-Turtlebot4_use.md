@@ -116,7 +116,7 @@ Try the following:
   hostname -I
   ```
 
-  If it does not match the robot's IP (192.168.1.XXX), revisit the Network Instructions below
+  If it does not match the robot's local network (192.168.1.XXX), revisit the Network Instructions below
 
 - Check your ROS configuration:
 
