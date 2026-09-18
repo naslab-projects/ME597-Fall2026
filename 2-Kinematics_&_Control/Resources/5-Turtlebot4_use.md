@@ -136,11 +136,11 @@ Try the following:
 >
 > **Settings → Privacy & security → Windows Security → Firewall & network protection**
 >
-> Select the network profile marked **(active)** and temporarily turn **Microsoft Defender Firewall** off. Then return to WSL and try:
+> Select the network profile marked **(active)** and temporarily turn **Microsoft Defender Firewall** off. Then return to the terminal and try:
 >
 > ```bash
-> ros2 daemon stop
-> ros2 topic list --no-daemon
+> ros2 daemon stop; ros2 daemon start
+> ros2 topic list
 > ```
 >
 > If the topics appear, the firewall was blocking the ROS 2/DDS communication. **Turn the firewall back on after troubleshooting** and consult a TA if needed.
@@ -154,7 +154,7 @@ Try the following:
    ros2 daemon stop; ros2 daemon start
    ```
 
-7. When you are done using the physical robot, you must deactivate the Discovery Server settings for ROS 2 to work with the simulator. See the instructions below to switch configurations.
+7. When you are **done using the physical robot**, you must deactivate the Discovery Server settings for ROS 2 to work with the simulator. See the instructions below to switch configurations.
 
 ## Switching Between Simulator and Robot (Discovery Server)
 
