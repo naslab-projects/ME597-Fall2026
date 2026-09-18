@@ -110,6 +110,13 @@ Try the following:
   ```bash
   ping 192.168.1.1XX
   ```
+- Check your computer's IP address
+
+  ```bash
+  hostname -I
+  ```
+
+  If it does not match the robot's IP (192.168.1.XXX), revisit the Network Instructions below
 
 - Check your ROS configuration:
 
