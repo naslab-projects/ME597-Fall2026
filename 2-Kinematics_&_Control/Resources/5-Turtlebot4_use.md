@@ -4,30 +4,30 @@
 When lab is over, you must power off the turtlebot and return it to the storage cabinet. Be mindful that this robot is shared with the other section. Regardless of how much you completed, record your progress. For robot assignments, partial credit may be given for partially working solutions on robot.
 
 ## 0. Get your assigned Turtlebot4
-1. Check the lab group sign-up spreadsheet to get your robot ID for you and your partner.
-2. This ID will correspond to your robot's IP address, the domain id, and discovery server id of the robot. This ID number is printed on the robot.
+1. Check the lab group sign-up spreadsheet (under Lab 0 on Brightspace) to get your robot ID for you and your partner.
+2. The robot ID determines the robot's **ROS domain ID**, **Discovery Server ID**, and **IP address**. For Robot XX, the IP address is 192.168.1.1XX. This ID number is printed on the robot.
 
 ## 1. Turn on Turtlebot4
 1. Place the Turtlebot4 on the charging station.
-1. When the robot gets power, the light ring will turn on (white).
-1. Wait 1-2 minutes for it to boot. It will chime when it is ready.
+2. When the robot gets power, the light ring will turn on (white).
+3. Wait 1-2 minutes for it to boot. It will chime when it is ready.
     - If the light ring turns a different color, it could be low battery, failed to connect wifi, or some other issue. Refer here: [Create3 Buttons and Light Ring Docs](https://iroboteducation.github.io/create3_docs/hw/face/)
     - If it repeatedly undocks from the docking station, press the dock button (1 dot) on top of the Turtlebot. It will attempt to autonomously dock. You must wait for it to finish. It might help to hold the docking station in place. The robot might get distracted by other docking stations. The undock button (2 dots) will undock the robot.
 
 ## 2. Connect to the Turtlebot4 via the ME597_TB4 network
 1. First, connect your pc to ME597_TB4. The password is `turtlebot4`. If you are using a Virtual Machine, follow the VM network instructions at the bottom of the page.
-1. The robot will automatically connect to ME597_TB4 on startup. 
-1. (optional) Try to ping your Turtlebot4: `ping 192.168.1.1XX` (XX is your robot ID number)
+2. The robot will automatically connect to ME597_TB4 on startup. 
+3. Verify that your PC can reach the TurtleBot 4: `ping 192.168.1.1XX` (XX is your robot ID number)
     - It should say something like `64 bytes from 192.168.1.1XX: icmp_seq=1 ttl=64 time=33.3 ms`
     - If it says `destination host unreachable`, your PC cannot reach the robot via wifi.
-    - Be patient. The Turtlebot4 must be fully booted. If it has not connected after a couple minutes, try restarting the Turtlebot4 and moving it closer to the router.
+    - Be patient. The TurtleBot4 must be fully booted. If it has not connected after a couple minutes, try restarting the TurtleBot4 and moving it closer to the router.
 
 # ROS2 configuration
 Recall from your lab 2 reading of [Turtlebot4 Networking](https://turtlebot.github.io/turtlebot4-user-manual/setup/networking.html), that connecting multiple devices in ROS2 has two primary configurations: Simple Discovery and Discovery Server. Below are instructions for Discovery Server.
 
-## 3. Communicate with Turtlebot4 via ROS2: Discovery Server
+## 3. Communicate with TurtleBot4 via ROS2: Discovery Server
 1. Change your VM Network to **Bridged** (See VM Network Instructions below)
-2. In your '~/.bashrc',comment out your ROS_DOMAIN_ID (# export ROS_DOMAIN_ID=XX) and change your local host to 0 to (ROS_LOCALHOST_ONLY=0)
+2. In '~/.bashrc', comment out any manually configured 'ROS_DOMAIN_ID' (# export ROS_DOMAIN_ID=XX) and set 'export ROS_LOCALHOST_ONLY=0'. The Discovery Server setup script will configure ROS_DOMAIN_ID automatically.
 3. Do `User PC Setup` here: [Setup Discovery Server](https://turtlebot.github.io/turtlebot4-user-manual/setup/discovery_server.html#user-pc). After calling the setup script, input the following response values for their corresponding settings (XX is your robot ID number):
 ```
 ROS_DOMAIN_ID: XX
@@ -36,22 +36,23 @@ Discovery Server IP: 192.168.1.1XX
 Discovery Server Port: [Enter]
 done (d)
 ```
-4. To test, do `ros2 topic list` in your PC. Turtlebot4 robot topics should be available.
+4. To test, do `ros2 topic list` in your PC. TurtleBot4 robot topics should be available.
 
     Is ros2 topic list not getting the robot topics?
-    - Mack sure you sourced your .bashrc file: source ~/.bashrc
+    - Make sure you sourced your .bashrc file: source ~/.bashrc
     - Restart the ros2 daemon: `ros2 daemon stop; ros2 daemon start`
     - Do `ros2 topic list` twice.
-    - Check again your connection to the Turtlebot4 using previous steps.
+    - Check again your connection to the TurtleBot4 using previous steps.
     - Check your PC configuration with `printenv | grep -i ros`
-    - Make sure ROS_LOCALHOST_ONLY=0 (Only when communicating with the Turtlebot4!)
+    - Make sure ROS_LOCALHOST_ONLY=0 (Only when communicating with the TurtleBot4!)
     - Power cycle the robot
     - Refer to debugging steps below
+ 
+5. Changing robots: If you switch to a different TurtleBot 4, rerun the Discovery Server configuration script using the new robot's ID and IP address. The script updates /etc/turtlebot4_discovery/setup.bash.
+6. When you are done using the physical robot, you must deactivate the discovery server settings for ROS2 to work with the simulator. See the instructions below to switch configurations.
 
-4. When you are done using the physical robot, you must deactivate the discovery server settings for ROS2 to work with the simulator. See the instructions below to switch configurations.
-
-## Switching between Simulator and Robot (Simple Discovery)
-Your environment needs three different configurations for using the simulator and for connecting to the physical robot (in the two network configurations). To change between these, you need to modify your `~/.bashrc`. Below are snippets of what your `~/.bashrc` should look like:
+## Switching between Simulator and Robot (Discovery Server)
+Your environment needs two different configurations for using the simulator and for connecting to the physical robot. To change between these, you need to modify your `~/.bashrc`. Below are snippets of what your `~/.bashrc` should look like:
 
 ### 1. To use Simulator:
 ```
@@ -75,23 +76,6 @@ source /etc/turtlebot4_discovery/setup.bash  # Applies configuration specified i
 
 Remember to open a new terminal each time you switch. You may have to do `ros2 daemon stop; ros2 daemon start`
 
-## Debugging the Turtlebot4 via ssh
-As a last resort: If you have verified connection to wifi, pinged your robot, double checked your configuration, power cycled the robot, and you suspect an issue with the robot, you may use the following to debug:
-1. SSH into the robot: `ssh ubuntu@192.168.1.1XX`. The password is `turtlebot4`
-
-    ```
-    DO NOT create or modify any files in the Turtlebot4.
-    DO NOT upgrade or re-install any Turtlebot4 packages. 
-    ```` 
-
-    Remember, for assignments, you will use ROS2 on your PC and communicate via ROS2 topics and services with the turtlebot4.
-1. Check topics and nodes with `ros2 topic list` `ros2 node list`
-1. Do `turtlebot4-setup` 
-    - DO NOT apply any new settings - if you think the configuration is wrong, consult a TA.
-    - You may check the status of the turtlebot4 upstart job and restart it if necessary
-    - You may view the current settings
-
-
 ## VM Network Instructions
 Getting internet connection on a VM should be handled automatically by the VM, however, for ROS communication to work between your VM and another device, the VM Network Adapter must be in "Bridged" mode. In Bridged mode, the VM’s network adapter is connected directly to the physical network, as if it were a separate physical machine. The VM gets its own IP address on the local network, similar to other devices (like your physical computer, printers, etc.). 
 
@@ -114,3 +98,19 @@ If this did not work, follow these steps from [this tutorial](https://onlinecomp
 ![images/vmware-bridged-network-adapter-debug.png](images/vmware-bridged-network-adapter-debug.png)
 
 5. Last, re-do steps 2 and 3 of the original instructions above ("Edit virtual machine settings" ...)
+
+## Debugging the TurtleBot4 via ssh
+As a last resort: If you have verified connection to wifi, pinged your robot, double checked your configuration, power cycled the robot, and you suspect an issue with the robot, you may use the following to debug:
+1. SSH into the robot: `ssh ubuntu@192.168.1.1XX`. The password is `turtlebot4`
+
+    ```
+    DO NOT create or modify any files in the TurtleBot4.
+    DO NOT upgrade or re-install any TurtleBot4 packages. 
+    ```` 
+
+    Remember, for assignments, you will use ROS2 on your PC and communicate via ROS2 topics and services with the TurtleBot4.
+1. Check topics and nodes with `ros2 topic list` and `ros2 node list`
+1. Do `turtlebot4-setup` 
+    - DO NOT apply any new settings - if you think the configuration is wrong, consult a TA.
+    - You may check the status of the TurtleBot4 upstart job and restart it if necessary
+    - You may view the current settings
