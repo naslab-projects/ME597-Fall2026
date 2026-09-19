@@ -182,7 +182,7 @@ source /etc/turtlebot4_discovery/setup.bash
 # export ROS_DOMAIN_ID=XX
 ```
 
-Remember to open a new terminal each time you switch, or run:
+Remember to change the namespaces and to open a new terminal each time you switch, or run:
 
 ```bash
 source ~/.bashrc
