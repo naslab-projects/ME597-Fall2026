@@ -88,61 +88,51 @@ Recall from your Lab 2 reading on [TurtleBot 4 Networking](https://turtlebot.git
 
    TurtleBot 4 robot topics should now be available.
 
-### `ros2 topic list` not showing the robot topics?
-
-Try the following:
-
-- Make sure you sourced your `.bashrc`:
-
-  ```bash
-  source ~/.bashrc
-  ```
-
-- Restart the ROS 2 daemon:
-
-  ```bash
-  ros2 daemon stop; ros2 daemon start
-  ```
-
-- Try `ros2 topic list` again.
-- Verify that you can still ping your assigned robot:
-
-  ```bash
-  ping 192.168.1.1XX
-  ```
-- Check your computer's IP address
-
-  ```bash
-  hostname -I
-  ```
-
-  If it does not match the robot's local network `192.168.1.XXX`, revisit [VM Network Instructions](#vm-network-instructions) below. **After changing network settings, rerun the TurtleBot 4 Discovery Server setup script** using your assigned robot ID and IP address.
-
-- Check your ROS configuration:
-
-  ```bash
-  printenv | grep -i ros
-  ```
-
-- Make sure `ROS_LOCALHOST_ONLY=0` when communicating with the physical TurtleBot 4.
-- Double-check that the `ROS_DOMAIN_ID` and Discovery Server IP correspond to your **current robot**.
-- Power cycle the robot.
-
-**Can ping the robot but still can't see ROS 2 topics? Check the Windows firewall.**
-
-Temporarily disabling the firewall is an important troubleshooting step because Windows Firewall may block ROS 2/DDS traffic even though `ping` works.
-
-To temporarily disable it on Windows 11:
-
-**Settings → Privacy & security → Windows Security → Firewall & network protection**
-
-Select the network profile marked **(active)** and temporarily turn **Microsoft Defender Firewall** off. Then return to the terminal and try:
-
-```bash
-ros2 daemon stop; ros2 daemon start
-ros2 topic list
-```
-If the topics appear, the firewall was blocking the ROS 2/DDS communication. **Turn the firewall back on after troubleshooting** and consult a TA if needed.
+> ### `ros2 topic list` not showing the robot topics?
+> 
+> Try the following:
+> 
+> - Make sure you sourced your `.bashrc`:
+>   ```bash
+>   source ~/.bashrc
+>   ```
+> 
+> - Restart the ROS 2 daemon:
+>   ```bash
+>   ros2 daemon stop; ros2 daemon start
+>   ```
+> 
+> - Try `ros2 topic list` again.
+>   
+> - Verify that you can still ping your assigned robot:
+>   ```bash
+>   ping 192.168.1.1XX
+>   ```
+>   
+> - Check your computer's IP address
+>   ```bash
+>   hostname -I
+>   ```
+>   If it does not match the robot's local network `192.168.1.XXX`, revisit [VM Network Instructions](#vm-network-instructions) below. **After changing network settings, rerun the TurtleBot 4 Discovery Server setup script** using your assigned robot ID and IP address.
+> 
+> - Check your ROS configuration:
+>   ```bash
+>   printenv | grep -i ros
+>   ```
+>   Make sure `ROS_LOCALHOST_ONLY=0` when communicating with the physical TurtleBot 4.
+>   Double-check that the `ROS_DOMAIN_ID` and Discovery Server IP correspond to your **current robot**.
+> - Power cycle the robot.
+>
+> **Can ping the robot but still can't see ROS 2 topics? Check the Windows firewall.**
+> Temporarily disabling the firewall is an important troubleshooting step because Windows Firewall may block ROS 2/DDS traffic even though `ping` works.
+> To temporarily disable it on Windows 11:
+> **Settings → Privacy & security → Windows Security → Firewall & network protection**
+> Select the network profile marked **(active)** and temporarily turn **Microsoft Defender Firewall** off. Then return to the terminal and try:
+> ```bash
+> ros2 daemon stop; ros2 daemon start
+> ros2 topic list
+> ```
+> If the topics appear, the firewall was blocking the ROS 2/DDS communication. **Turn the firewall back on after troubleshooting** and consult a TA if needed.
 
 6. **Changing robots:** If you switch to a different TurtleBot 4, **rerun the Discovery Server configuration script** using the new robot's ID and IP address. The script updates `/etc/turtlebot4_discovery/setup.bash`.
 
