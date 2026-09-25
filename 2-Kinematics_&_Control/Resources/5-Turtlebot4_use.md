@@ -128,22 +128,21 @@ Try the following:
 - Double-check that the `ROS_DOMAIN_ID` and Discovery Server IP correspond to your **current robot**.
 - Power cycle the robot.
 
-> **Can ping the robot but still can't see ROS 2 topics? Check the Windows firewall.**
->
-> Temporarily disabling the firewall is an important troubleshooting step because Windows Firewall may block ROS 2/DDS traffic even though `ping` works.
->
-> To temporarily disable it on Windows 11:
->
-> **Settings → Privacy & security → Windows Security → Firewall & network protection**
->
-> Select the network profile marked **(active)** and temporarily turn **Microsoft Defender Firewall** off. Then return to the terminal and try:
->
-> ```bash
-> ros2 daemon stop; ros2 daemon start
-> ros2 topic list
-> ```
->
-> If the topics appear, the firewall was blocking the ROS 2/DDS communication. **Turn the firewall back on after troubleshooting** and consult a TA if needed.
+**Can ping the robot but still can't see ROS 2 topics? Check the Windows firewall.**
+
+Temporarily disabling the firewall is an important troubleshooting step because Windows Firewall may block ROS 2/DDS traffic even though `ping` works.
+
+To temporarily disable it on Windows 11:
+
+**Settings → Privacy & security → Windows Security → Firewall & network protection**
+
+Select the network profile marked **(active)** and temporarily turn **Microsoft Defender Firewall** off. Then return to the terminal and try:
+
+```bash
+ros2 daemon stop; ros2 daemon start
+ros2 topic list
+```
+If the topics appear, the firewall was blocking the ROS 2/DDS communication. **Turn the firewall back on after troubleshooting** and consult a TA if needed.
 
 6. **Changing robots:** If you switch to a different TurtleBot 4, **rerun the Discovery Server configuration script** using the new robot's ID and IP address. The script updates `/etc/turtlebot4_discovery/setup.bash`.
 
@@ -280,7 +279,7 @@ For WSL2, use **mirrored networking mode** so that WSL can communicate directly 
    ping 192.168.1.1XX
    ```
 
-## Debugging the TurtleBot 4 via SSH
+## Debugging the TurtleBot 4 via SSH (For TA Use Only)
 
 As a last resort, if you have verified the Wi-Fi connection, pinged your robot, double-checked your configuration, power cycled the robot, and suspect an issue with the robot, you may use the following steps to debug:
 
