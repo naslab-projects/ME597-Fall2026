@@ -120,13 +120,17 @@ Recall from your Lab 2 reading on [TurtleBot 4 Networking](https://turtlebot.git
 >   printenv | grep -i ros
 >   ```
 >   Make sure `ROS_LOCALHOST_ONLY=0` when communicating with the physical TurtleBot 4.
+>   
 >   Double-check that the `ROS_DOMAIN_ID` and Discovery Server IP correspond to your **current robot**.
 > - Power cycle the robot.
 >
 > **Can ping the robot but still can't see ROS 2 topics? Check the Windows firewall.**
+> 
 > Temporarily disabling the firewall is an important troubleshooting step because Windows Firewall may block ROS 2/DDS traffic even though `ping` works.
+> 
 > To temporarily disable it on Windows 11:
 > **Settings → Privacy & security → Windows Security → Firewall & network protection**
+> 
 > Select the network profile marked **(active)** and temporarily turn **Microsoft Defender Firewall** off. Then return to the terminal and try:
 > ```bash
 > ros2 daemon stop; ros2 daemon start
