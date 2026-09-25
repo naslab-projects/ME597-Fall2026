@@ -26,7 +26,7 @@ Task_4:
   <li>Execution</li>
 </ol>
 
-This will be a three-week lab, with the following tasks each week:
+This will be a four-week lab, with the following tasks each week:
 * Week 1: Mapping (hardware), mapping (simulation), A*
 * Week 2: Navigation (simulation)
 * Weeks 3/4: Navigation (hardware)
