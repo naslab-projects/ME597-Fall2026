@@ -66,9 +66,9 @@ Use [this](https://turtlebot.github.io/turtlebot4-user-manual/tutorials/generate
         * $`ros2 node info <node_name>`
         * $`ros2 topic echo <topic_name>`
 
-5. Once you're satisfied with clarity of the generated map, manually [save the map](https://turtlebot.github.io/turtlebot4-user-manual/tutorials/generate_map.html#save-the-map) as `classroom_map`, before killing `slam.launch.py`. Be sure to add the namespace remapping argument:
+5. Once you're satisfied with clarity of the generated map, manually save the map as `classroom_map`, before killing `slam.launch.py`. Be sure to add the namespace remapping argument:
     ```
-    ros2 run nav2_map_server map_saver_cli -f "map_name" --ros-args -p map_subscribe_transient_local:=true -r __ns:=/robot
+    ros2 run nav2_map_server map_saver_cli -f </path/to/workspace/classroom_map> -t /robot/map --ros-args -p map_subscribe_transient_local:=true -r __ns:=/robot
     ```
 
 
