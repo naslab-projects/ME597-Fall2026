@@ -82,7 +82,7 @@ class Navigation(Node):
     def get_path_idx(self, path, vehicle_pose):
         """! Path follower.
         @param  path                  Path object containing the sequence of waypoints of the created path.
-        @param  current_goal_pose     PoseStamped object containing the current vehicle position.
+        @param  vehicle_pose     PoseStamped object containing the current vehicle position.
         @return idx                   Position in the path pointing to the next goal pose to follow.
         """
         idx = 0

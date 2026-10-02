@@ -119,7 +119,7 @@ In this part of the lab, we will work with the robot in simulation. This allows 
 
 **Do not use preexisting packages like Nav2 to implement this node.**
 
-Please give this node the alias `auto_navigator.py` in your `setup.py` file to start up the auto-navigator node. You will use this node both in simulation and in hardware (the launch files will be different).
+Please give this node the alias `auto_navigator` in your `setup.py` file to start up the auto-navigator node. You will use this node both in simulation and in hardware (the launch files will be different).
 
 Compared to other nodes, `auto_navigator.py` is predicted to have a relatively high number of lines of code. We recommend breaking your logic into subfunctions and following good coding styles.
 
@@ -131,14 +131,15 @@ Compared to other nodes, `auto_navigator.py` is predicted to have a relatively h
    * 20-50 seconds = 10 points
    * 5 - 20 seconds = 15 points
    * < 5 seconds = 20 points
-   * >90 seconds = 0 points
+   * \> 90 seconds = 0 points
+
 After completing this node, 
-**Testing your code (assignmen check off points)**
-2. Follow the instructions [here](https://github.com/Purdue-ME597/sim_ws) to use the simulation environment. Note the specific launch instructions in the `src/turtlebot3_gazebo` subdirectory.
-3. Launch the `navigator.launch.py` file (which belongs to `turtlebot3_gazebo` pkg). 
-3. Test the `auto_navigator.py` by pick a [target pose in RVIz](https://turtlebot.github.io/turtlebot4-user-manual/tutorials/navigation.html). Ensure it generates a path to the goal and navigates towards it.
+**Testing your code (Assignment check off points)**
+1. Follow the instructions [here](https://github.com/Purdue-ME597/sim_ws) to use the simulation environment. Note the specific launch instructions in the `src/turtlebot3_gazebo` subdirectory.
+2. Launch the `navigator.launch.py` file (which belongs to `turtlebot3_gazebo` pkg). 
+3. Test the `auto_navigator.py` by picking a [target pose in RVIz](https://turtlebot.github.io/turtlebot4-user-manual/tutorials/navigation.html). Ensure it generates a path to the goal and navigates towards it.
 4. Record a video showing your autonomous navigation going to a desired position.
-4. Record the `/scan` and `/cmd_vel` topics using rosbag (see Deliverables section at end of document).
+5. Record the `/scan` and `/cmd_vel` topics using rosbag (see Deliverables section at end of document).
 
 ### Weeks 7/8: Navigation, Part II
 
